@@ -36,10 +36,11 @@ def add_new_entry():
     DB.insert(DATA)
     print "Successfully recorded"
 
-
 def print_month_usage(): 
-    month = raw_input("Month :")
-    year  = raw_input("Year  :")
+    M = strftime("%m", NOW)
+    Y = strftime("%y", NOW)
+    month= raw_input("Month[{}]:".format(M)) or M
+    year = raw_input("Year [{}]:".format(Y)) or Y
     assert(month)
     assert(year)
     R = DB.search((where('year') == year) & (where('month')==month))
